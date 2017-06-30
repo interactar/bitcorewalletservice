@@ -1,0 +1,15 @@
+db:
+  image: mongo
+  ports:
+    - "27017"
+  volumes:
+    - "/data/"
+
+app:
+  build: .
+  ports:
+    - "3232:3232"
+  volumes_from:
+    - db
+  links:
+    - db
