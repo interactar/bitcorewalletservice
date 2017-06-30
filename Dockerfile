@@ -3,6 +3,7 @@ MAINTAINER Javier Ailbirt.
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     mongodb-clients \
+    git-core \
     libkrb5-dev \
   && rm -rf /var/lib/apt/lists/*
 
