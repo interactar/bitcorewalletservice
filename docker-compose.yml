@@ -1,15 +1,26 @@
-db:
-  image: mongo
+ bitcore-db:
+  image: mongo:latest
   ports:
-    - "27017"
+    - "27017:27017"
   volumes:
-    - "/data/"
+    - /srv/docker/mongodb:/data/db
+  networks:
+    - bitcore   
+  #restart: always
 
-app:
-  build: .
+wallet-service:
+  image: quay.io/interactar/bitcorewalletservice:master
   ports:
     - "3232:3232"
-  volumes_from:
-    - db
+  volumes:
+    - ./walletcfg/config.js:/bws/config.js
+      #  volumes_from:
+      #    - db
+  networks:
+    - bitcore   
   links:
-    - db
+    - bitcore-db
+
+networks:
+ bitcore:
+     driver: bridge

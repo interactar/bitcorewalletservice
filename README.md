@@ -1,5 +1,5 @@
 # docker-bitcore-wallet-service
-## A direct from source build of bitcore-wallet-service by [Alejandro Baez](https://twitter.com/a_baez)
+## A direct from source build of bitcore-wallet-service
 
 ### DESCRIPTION
 The purpose of this container is to be a base for [BWS](https://github.com/bitpay/bitcore-wallet-service)

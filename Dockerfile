@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN git clone https://github.com/bitpay/bitcore-wallet-service.git /bws
 WORKDIR /bws
 
-ADD add/config.js /bws/config.js
+ADD walletcfg/config.js /bws/config.js
 
 RUN npm install
 
