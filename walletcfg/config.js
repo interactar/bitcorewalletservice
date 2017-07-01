@@ -19,20 +19,20 @@ var config = {
 
   storageOpts: {
     mongoDb: {
-      uri: 'mongodb://db:27017/bws',
+      uri: 'mongodb://bitcore-db:27017/bws',
     },
   },
   lockOpts: {
     //  To use locker-server, uncomment this:
     lockerServer: {
-      host: 'localhost',
+      host: '0.0.0.0',
       port: 3231,
     },
   },
   messageBrokerOpts: {
     //  To use message broker server, uncomment this:
     messageBrokerServer: {
-      url: 'http://localhost:3380',
+      url: 'http://0.0.0.0:3380',
     },
   },
   blockchainExplorerOpts: {

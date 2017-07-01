@@ -1,25 +1,32 @@
- bitcore-db:
-  image: mongo:latest
-  ports:
-    - "27017:27017"
-  volumes:
-    - /srv/docker/mongodb:/data/db
-  networks:
-    - bitcore   
-  #restart: always
+version: '2'
+services:
 
-wallet-service:
-  image: quay.io/interactar/bitcorewalletservice:master
-  ports:
-    - "3232:3232"
-  volumes:
-    - ./walletcfg/config.js:/bws/config.js
-      #  volumes_from:
-      #    - db
-  networks:
-    - bitcore   
-  links:
-    - bitcore-db
+  #Bitcore Wallet Service
+  wallet-service:
+    image: quay.io/interactar/bitcorewalletservice:master
+    ports:
+      - "3232:3232"
+    volumes:
+      - ./walletcfg/config.js:/bws/config.js
+      - ./walletLogs:/bws/logs
+      - ./runWalletService.sh:/runWalletService.sh
+        #  volumes_from:
+        #    - db
+    networks:
+      - bitcore   
+    links:
+      - bitcore-db
+    command: '/runWalletService.sh'
+
+  bitcore-db:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - /srv/docker/mongodb:/data/db
+    networks:
+      - bitcore   
+    #restart: always
 
 networks:
  bitcore:

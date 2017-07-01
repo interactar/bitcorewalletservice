@@ -16,4 +16,4 @@ RUN npm install
 
 EXPOSE 3232 3231 3380 443
 
-CMD npm start && tail -f logs/bws.log
+CMD npm start && tail -f /bws/logs/bws.log
